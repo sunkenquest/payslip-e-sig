@@ -1,11 +1,14 @@
 <template>
-    <h1>{{ title }}</h1>
+  <div>
+    <h2>{{ title }}</h2>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { defineProps } from 'vue';
 
-const props = defineProps<{ title: string }>();
+const props = defineProps<{
+  title: string;
+}>();
 console.log(props);
-
 </script>

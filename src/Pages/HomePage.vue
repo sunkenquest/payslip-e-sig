@@ -1,12 +1,13 @@
 <template>
-  <div class="main-container">
-    <h1 class="font-bold text-lg mx-auto md:mx-0">Sign Payslip</h1>
+  <div class="flex flex-col justify-center items-center min-h-screen">
+    <TitleMolecule />
+    <FileUploadOrganism />
+    <ImageUploadOrganism />
   </div>
-  <FileUploadOrganism class="mx-auto my-auto" />
-  <ImageUploadOrganism class="mx-auto my-auto" />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import ImageUploadOrganism from '../components/Organisms/ImageUploadOrganism.vue';
 import FileUploadOrganism from '../components/Organisms/FileUploadOrganism.vue';
+import TitleMolecule from '../components/Molecules/TitleMolecule.vue';
 </script>
