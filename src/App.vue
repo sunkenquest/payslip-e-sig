@@ -1,3 +1,9 @@
 <template>
-  <h1 class="font-bold text-2xl text-green-800">Hello World</h1>
+  <main class="w-full h-screen">
+    <HomePage class="mx-auto my-auto" />
+  </main>
 </template>
+
+<script setup lang="ts">
+import HomePage from './Pages/HomePage.vue';
+</script>
