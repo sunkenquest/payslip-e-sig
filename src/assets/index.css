@@ -4,7 +4,7 @@
 
 .main-container {
   @apply flex w-[60%]
-  mt-32
+  mt-4
   p-7
   bg-white
   rounded-md
