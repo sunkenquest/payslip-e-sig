@@ -6,6 +6,7 @@ export const useSignatureStore = defineStore('signatureStore', {
   state: (): SignatureState => ({
     status: EventStatus.initial,
     base64Image: null,
+    convImg: null,
     error: '',
   }),
   actions: {
@@ -35,6 +36,25 @@ export const useSignatureStore = defineStore('signatureStore', {
 
         reader.readAsDataURL(img);
       });
-    }
+    },
+
+    removeSavedSignature() {
+      localStorage.removeItem('signature');
+      console.log('Successfully Removed saved signature');
+    },
+
+    convertBase64ToFile(base64: string, filename: string) {
+      const arr = base64.split(',');
+      const mime = arr[0].match(/:(.*?);/)![1];
+      const bstr = atob(arr[1]);
+      const n = bstr.length;
+      const u8arr = new Uint8Array(n);
+
+      for (let i = 0; i < n; i++) {
+        u8arr[i] = bstr.charCodeAt(i);
+      }
+
+      this.convImg = new File([u8arr], filename, { type: mime });
+    },
   },
 });

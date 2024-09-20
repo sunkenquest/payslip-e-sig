@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import { useSignatureStore } from '../../stores/signature';
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import BaseTextMolecule from '../Molecules/BaseTextMolecule.vue';
 import ImageInputMolecule from '../Molecules/ImageInputMolecule.vue';
 
@@ -49,7 +49,6 @@ const handleImageChange = (file: File) => {
       }
     };
     signatureStore.uploadSignature(file);
-    signatureStore.uploadSignature(file);
     reader.readAsDataURL(file);
   } else {
     console.error('Invalid file type. Only images are allowed.');
@@ -64,7 +63,16 @@ const fileSize = computed(() => {
 });
 
 const removeFile = () => {
+  signatureStore.removeSavedSignature();
   image.value = null;
   imageUrl.value = null;
 };
+
+onMounted(() => {
+  const strImage = localStorage.getItem('signature');
+  if (strImage !== null) {
+    signatureStore.convertBase64ToFile(strImage, 'saved-signature.png');
+    image.value = signatureStore.convImg;
+  }
+});
 </script>
