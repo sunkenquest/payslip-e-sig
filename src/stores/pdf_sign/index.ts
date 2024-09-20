@@ -17,15 +17,18 @@ export const usePdfSignStore = defineStore('pdfSignStore', {
     },
 
     async SignPdf() {
+      this.status = EventStatus.loading;
       const strSignature = localStorage.getItem('signature');
 
       if (!this.pdf) {
         this.error = 'There is no uploaded pdf file';
+        this.status = EventStatus.failed;
         return;
       }
 
       if (!strSignature) {
         this.error = 'There is no existing signature data';
+        this.status = EventStatus.failed;
         return;
       }
 
@@ -38,7 +41,7 @@ export const usePdfSignStore = defineStore('pdfSignStore', {
         const signatureImage = await pdfDoc.embedPng(strSignature);
 
         const signatureDims = signatureImage.scale(0.5);
-        const x = width / 2 - signatureDims.width / 2;
+        const x = width / 2 - signatureDims.width / 2;  
         const y = height / 2 - signatureDims.height / 2;
 
         page.drawImage(signatureImage, {
@@ -57,11 +60,11 @@ export const usePdfSignStore = defineStore('pdfSignStore', {
         // });
 
         const pdfBytes = await pdfDoc.save();
-
         this.signedPdf = URL.createObjectURL(new Blob([pdfBytes], { type: 'application/pdf' }));
-        console.log(this.signedPdf);
+        this.status = EventStatus.success;
       } catch (error) {
         this.error = `Failed To load pdf ${error}`;
+        this.status = EventStatus.failed;
       }
 
     },
