@@ -1,22 +1,32 @@
 <template>
   <div class="main-container flex flex-col justify-center items-center space-y-5">
-    <BaseTextMolecule title="Upload Image" />
+    <BaseTextMolecule class="tetx-left w-full" title="Upload Image" />
     <ImageInputMolecule @change="handleImageChange" />
-    <div v-if="imageUrl" class="mt-4 w-full h-96 border border-gray-300 rounded-lg">
-      <img :src="imageUrl" alt="Uploaded Image" class="w-full h-full object-cover" />
+    <div v-if="image"
+      class="mt-4 w-full border border-gray-300 border-solid rounded-lg bg-white p-4 flex items-center justify-between h-20">
+      <div class="flex flex-col">
+        <span class="font-semibold text-xs">{{ image.name }}</span>
+        <span class="text-xs">{{ fileSize }}</span>
+      </div>
+      <div class="flex space-x-2">
+        <ButtonAtom label="Delete" color="red" @click="removeFile" />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import BaseTextMolecule from '../Molecules/BaseTextMolecule.vue';
 import ImageInputMolecule from '../Molecules/ImageInputMolecule.vue';
+import ButtonAtom from '../Atoms/ButtonAtom.vue';
 
+const image = ref<File | null>(null);
 const imageUrl = ref<string | null>(null);
 
 const handleImageChange = (file: File) => {
   if (file.type.startsWith('image/')) {
+    image.value = file;
     const reader = new FileReader();
     reader.onload = (e: ProgressEvent<FileReader>) => {
       if (e.target?.result) {
@@ -27,5 +37,17 @@ const handleImageChange = (file: File) => {
   } else {
     console.error('Invalid file type. Only images are allowed.');
   }
+};
+
+const fileSize = computed(() => {
+  if (image.value) {
+    return `${(image.value.size / 1024).toFixed(2)} KB`;
+  }
+  return '';
+});
+
+const removeFile = () => {
+  image.value = null;
+  imageUrl.value = null;
 };
 </script>
