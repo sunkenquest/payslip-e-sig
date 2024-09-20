@@ -22,7 +22,4 @@ import TitleMolecule from '../components/Molecules/TitleMolecule.vue';
 import { usePdfSignStore } from '../stores/pdf_sign';
 
 const pdfSignStore = usePdfSignStore();
-import { usePdfSignStore } from '../stores/pdf_sign';
-
-const pdfSignStore = usePdfSignStore();
 </script>
