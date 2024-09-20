@@ -12,6 +12,10 @@
       <iframe v-if="pdfSignStore.signedPdf" :src="pdfSignStore.signedPdf.toString()" width="600" height="500"
         frameborder="0"></iframe>
     </div>
+
+    <div v-if="pdfSignStore.status == EventStatus.failed">
+      <h1 class="font-bold text-red-900">{{ pdfSignStore.error }}</h1>
+    </div>
   </div>
 </template>
 
@@ -20,6 +24,9 @@ import ImageUploadOrganism from '../components/Organisms/ImageUploadOrganism.vue
 import FileUploadOrganism from '../components/Organisms/FileUploadOrganism.vue';
 import TitleMolecule from '../components/Molecules/TitleMolecule.vue';
 import { usePdfSignStore } from '../stores/pdf_sign';
+import { useSignatureStore } from '../stores/signature';
+import { EventStatus } from '../types/enums/status';
 
 const pdfSignStore = usePdfSignStore();
+const signaturestore = useSignatureStore();
 </script>
