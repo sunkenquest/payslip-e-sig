@@ -1,6 +1,6 @@
 <template>
   <div class="main-container flex flex-col justify-center items-center space-y-5">
-    <BaseTextMolecule class="tetx-left w-full" title="Upload Image" />
+    <BaseTextMolecule class="text-left w-full" title="Upload Signature(.png)" />
     <ImageInputMolecule :key="fileKey" @change="handleImageChange" />
     <div v-if="image"
       class="mt-4 w-full border border-gray-300 border-solid rounded-lg bg-white p-4 flex items-center justify-between h-20">

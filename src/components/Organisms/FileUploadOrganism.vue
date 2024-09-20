@@ -1,6 +1,6 @@
 <template>
   <div class="main-container flex flex-col justify-center items-center space-y-5">
-    <BaseTextMolecule class="text-left w-full" title="Upload File" />
+    <BaseTextMolecule class="text-left w-full" title="Upload Payslip" />
     <FileInputMolecule :key="fileKey" @change="handleFileChange" />
     <div v-if="file"
       class="mt-4 w-full border border-gray-300 border-solid rounded-lg bg-white p-4 flex items-center justify-between h-20">
