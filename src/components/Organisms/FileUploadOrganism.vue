@@ -1,7 +1,7 @@
 <template>
   <div class="main-container flex flex-col justify-center items-center space-y-5">
-    <BaseTextMolecule class="tetx-left w-full" title="Upload File" />
-    <FileInputMolecule @change="handleFileChange" />
+    <BaseTextMolecule class="text-left w-full" title="Upload Payslip" />
+    <FileInputMolecule :key="fileKey" @change="handleFileChange" />
     <div v-if="file"
       class="mt-4 w-full border border-gray-300 border-solid rounded-lg bg-white p-4 flex items-center justify-between h-20">
       <div class="flex flex-col">
@@ -25,6 +25,7 @@ import ButtonAtom from '../Atoms/ButtonAtom.vue';
 const pdfSignStore = usePdfSignStore();
 const file = ref<File | null>(null);
 const fileUrl = ref<string | null>(null);
+const fileKey = ref<number>(0);
 
 const handleFileChange = (selectedFile: File) => {
   if (selectedFile.type === 'application/pdf') {
@@ -52,5 +53,6 @@ const fileSize = computed(() => {
 const removeFile = () => {
   file.value = null;
   fileUrl.value = null;
+  fileKey.value += 1;
 };
 </script>

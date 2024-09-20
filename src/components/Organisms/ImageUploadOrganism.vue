@@ -1,7 +1,7 @@
 <template>
   <div class="main-container flex flex-col justify-center items-center space-y-5">
-    <BaseTextMolecule class="tetx-left w-full" title="Upload Image" />
-    <ImageInputMolecule @change="handleImageChange" />
+    <BaseTextMolecule class="text-left w-full" title="Upload Signature(.png)" />
+    <ImageInputMolecule :key="fileKey" @change="handleImageChange" />
     <div v-if="image"
       class="mt-4 w-full border border-gray-300 border-solid rounded-lg bg-white p-4 flex items-center justify-between h-20">
       <div class="flex flex-col">
@@ -38,6 +38,7 @@ import ButtonAtom from '../Atoms/ButtonAtom.vue';
 
 const image = ref<File | null>(null);
 const imageUrl = ref<string | null>(null);
+const fileKey = ref<number>(0);
 
 const handleImageChange = (file: File) => {
   if (file.type.startsWith('image/')) {
@@ -66,6 +67,7 @@ const removeFile = () => {
   signatureStore.removeSavedSignature();
   image.value = null;
   imageUrl.value = null;
+  fileKey.value += 1;
 };
 
 onMounted(() => {
