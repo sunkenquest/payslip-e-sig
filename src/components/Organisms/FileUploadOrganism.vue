@@ -36,8 +36,7 @@ const handleFileChange = (selectedFile: File) => {
       }
     };
     reader.readAsDataURL(selectedFile);
-    pdfSignStore.uploadPdf(file);
-    reader.readAsDataURL(file);
+    pdfSignStore.uploadPdf(selectedFile);
   } else {
     console.error('Invalid file type. Only PDFs are allowed.');
   }
