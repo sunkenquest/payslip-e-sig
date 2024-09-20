@@ -40,7 +40,10 @@ export const usePdfSignStore = defineStore('pdfSignStore', {
         const { width, height } = page.getSize();
         const signatureImage = await pdfDoc.embedPng(strSignature);
 
-        const signatureDims = signatureImage.scale(0.5);
+        const signatureDims = {
+          height: 30,
+          width: 90,
+        };
         const x = width / 2 - signatureDims.width / 2;  
         const y = height / 2 - signatureDims.height / 2;
 
