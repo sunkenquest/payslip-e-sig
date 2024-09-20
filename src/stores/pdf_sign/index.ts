@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { PdfSignState } from "../../types/interfaces/states/pdf_sign_state";
 import { EventStatus } from "../../types/enums/status";
-import { PDFDocument, rgb } from "pdf-lib";
+import { PDFDocument } from "pdf-lib";
 
 export const usePdfSignStore = defineStore('pdfSignStore', {
   state: (): PdfSignState => ({
@@ -37,15 +37,15 @@ export const usePdfSignStore = defineStore('pdfSignStore', {
         const pdfDoc = await PDFDocument.load(arrayBuffer);
 
         const page = pdfDoc.getPage(0)
-        const { width, height } = page.getSize();
+        // const { width, height } = page.getSize();
         const signatureImage = await pdfDoc.embedPng(strSignature);
 
         const signatureDims = {
           height: 30,
           width: 90,
         };
-        const x = width / 2 - signatureDims.width / 2;  
-        const y = height / 2 - signatureDims.height / 2;
+        // const x = width / 2 - signatureDims.width / 2;  
+        // const y = height / 2 - signatureDims.height / 2;
 
         page.drawImage(signatureImage, {
           x: 150,
