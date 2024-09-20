@@ -3,6 +3,7 @@
     <HomePage class="mx-auto my-auto" />
   </main>
 </template>
-<script lang="ts" setup>
+
+<script setup lang="ts">
 import HomePage from './Pages/HomePage.vue';
 </script>

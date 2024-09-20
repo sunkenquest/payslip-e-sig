@@ -16,9 +16,24 @@
 </template>
 
 <script lang="ts" setup>
+import { useSignatureStore } from '../../stores/signature';
 import { computed, ref } from 'vue';
 import BaseTextMolecule from '../Molecules/BaseTextMolecule.vue';
 import ImageInputMolecule from '../Molecules/ImageInputMolecule.vue';
+
+const signatureStore = useSignatureStore();
+
+// const handleFileUpload = async (event: Event) => {
+//   const target = event.target as HTMLInputElement;
+//   if (target.files && target.files[0]) {
+//     const file = target.files[0];
+//     try {
+//       await signatureStore.uploadSignature(file);
+//     } catch (error) {
+//       console.error('Error uploading signature:', error)
+//     }
+//   }
+// };
 import ButtonAtom from '../Atoms/ButtonAtom.vue';
 
 const image = ref<File | null>(null);
@@ -33,6 +48,7 @@ const handleImageChange = (file: File) => {
         imageUrl.value = e.target.result as string;
       }
     };
+    signatureStore.uploadSignature(file);
     reader.readAsDataURL(file);
   } else {
     console.error('Invalid file type. Only images are allowed.');
