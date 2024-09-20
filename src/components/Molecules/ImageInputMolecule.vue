@@ -11,14 +11,12 @@
         <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span></p>
         <p class="text-xs text-gray-500 dark:text-gray-400">PNG</p>
       </div>
-      <input id="dropzone-image" type="file" class="hidden" accept="image/*" @change="change" />
+      <input id="dropzone-image" type="file" class="hidden" accept="image/png" @change="change" />
     </label>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineEmits } from 'vue';
-
 const emit = defineEmits<{
   (e: 'change', file: File): void;
 }>();
