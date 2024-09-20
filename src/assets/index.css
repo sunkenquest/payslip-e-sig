@@ -3,67 +3,29 @@
 @tailwind utilities;
 
 .main-container {
-  @apply flex w-[60%]
-  mt-4
-  p-7
-  bg-white
-  rounded-md
-  shadow-xl
+  @apply flex w-[90%] mt-4 p-7 bg-white rounded-md shadow-xl
 }
 
 /* File Inputs */
 .signature-input-name {
-  @apply block
-  mb-2
-  text-sm
-  font-medium
-  text-gray-900
+  @apply block mb-2 text-sm font-medium text-gray-900
   /* dark:text-white */
 }
 
 .signature-input {
-  @apply block
-  w-full
-  mb-5
-  text-sm
-  text-gray-900
-  border
-  border-gray-300
-  rounded-lg
-  cursor-pointer
-  bg-gray-50
-  dark:text-gray-400
-  focus:outline-none
-  dark:bg-gray-700
-  dark:border-gray-600
-  dark:placeholder-gray-400
+  @apply block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
 }
 
 /* button designs */
 
 .button-color-blue {
-  @apply bg-blue-700
-  hover:bg-blue-800
-  focus:ring-blue-300
-  dark:bg-blue-600
-  dark:hover:bg-blue-700
-  dark:focus:ring-blue-800
+  @apply bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
 }
 
 .button-color-red {
-  @apply bg-red-700
-  hover:bg-red-800
-  focus:ring-red-300
-  dark:bg-red-600
-  dark:hover:bg-red-700
-  dark:focus:ring-red-800
+  @apply bg-red-700 hover:bg-red-800 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800
 }
 
 .button-color-green {
-  @apply bg-green-700
-  hover:bg-green-800
-  focus:ring-green-300
-  dark:bg-green-600
-  dark:hover:bg-green-700
-  dark:focus:ring-green-800
+  @apply bg-green-700 hover:bg-green-800 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800
 }
