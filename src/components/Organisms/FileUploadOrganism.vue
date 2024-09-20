@@ -10,9 +10,11 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { usePdfSignStore } from '../../stores/pdf_sign';
 import FileInputMolecule from '../Molecules/FileInputMolecule.vue';
 import BaseTextMolecule from '../Molecules/BaseTextMolecule.vue';
 
+const pdfSignStore = usePdfSignStore();
 const fileUrl = ref<string | null>(null);
 
 const handleFileChange = (file: File) => {
@@ -23,10 +25,10 @@ const handleFileChange = (file: File) => {
         fileUrl.value = e.target.result as string;
       }
     };
+    pdfSignStore.uploadPdf(file);
     reader.readAsDataURL(file);
   } else {
     console.error('Invalid file type. Only PDFs are allowed.');
   }
 };
 </script>
-
