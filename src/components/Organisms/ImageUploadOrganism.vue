@@ -49,6 +49,7 @@ const handleImageChange = (file: File) => {
       }
     };
     signatureStore.uploadSignature(file);
+    signatureStore.uploadSignature(file);
     reader.readAsDataURL(file);
   } else {
     console.error('Invalid file type. Only images are allowed.');
