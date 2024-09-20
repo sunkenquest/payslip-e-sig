@@ -1,7 +1,9 @@
 <template>
-  <div class="main-container flex flex-col justify-center items-center space-y-5">
+  <div class="main-container flex flex-col justify-center items-center space-y-3">
     <BaseTextMolecule class="text-left w-full" title="Upload Signature(.png)" />
     <ImageInputMolecule :key="fileKey" @change="handleImageChange" />
+    <a href="https://www.remove.bg" class="text-xs text-blue-500 hover:underline">image background
+      remover</a>
     <div v-if="image"
       class="mt-4 w-full border border-gray-300 border-solid rounded-lg bg-white p-4 flex items-center justify-between h-20">
       <div class="flex flex-col">

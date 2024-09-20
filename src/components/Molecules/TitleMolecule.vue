@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <TitleAtom class="font-bold text-lg mx-auto md:mx-0 " title="SIGN PAYSLIP" />
+    <TitleAtom class="font-bold text-lg mx-auto md:mx-0 " title="SIGN PAYSLIP FOR HIPE EMPLOYEES" />
   </div>
 </template>
 
